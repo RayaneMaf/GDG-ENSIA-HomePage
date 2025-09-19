@@ -1,0 +1,58 @@
+.navContainer {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0rem;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.navWrapper {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  align-items: center;
+}
+
+.navWrapper li a {
+  text-decoration: none;
+  color: var(--fontColor);
+  font-size: 1.25rem;
+}
+
+.navWrapper li button {
+  font-size: 1.25rem;
+  padding: 0.3rem 2rem;
+  border: 2px var(--fontColor) solid;
+  border-radius: 1rem;
+  background: linear-gradient(
+    90deg,
+    var(--blueColor),
+    var(--greenColor),
+    var(--yellowColor),
+    var(--redColor)
+  );
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.navLogoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoSVG {
+  width: 3.5rem;
+}
+
+.logoTitle {
+  font-size: 1rem;
+}
+
+.logoTitle span {
+  font-weight: 700;
+}

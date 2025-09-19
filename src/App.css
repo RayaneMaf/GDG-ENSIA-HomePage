@@ -1,0 +1,21 @@
+@import url("https://fonts.cdnfonts.com/css/product-sans");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+:root {
+  --blueColor: rgba(66, 133, 243, 1);
+  --redColor: rgba(233, 67, 53, 1);
+  --greenColor: rgba(52, 168, 83, 1);
+  --yellowColor: rgba(248, 170, 0, 1);
+  --fontColor: rgba(32, 32, 32, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 400;
+  color: var(--fontColor);
+}
+
+html {
+  font-family: "Product Sans", sans-serif;
+}

@@ -1,0 +1,84 @@
+.about {
+  margin: 0rem min(5vw, 8rem);
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titleContainer {
+  filter: brightness(0.5);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.details {
+  position: relative;
+  display: flex;
+  gap: 8rem;
+  padding: 1rem;
+}
+
+.overlayTitle {
+  position: absolute;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 17vw;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.04);
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  line-height: 80%;
+}
+
+.detailsLeftSide,
+.detailsRightSide {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.titleContainer img,
+.rightSideTitleContainer img {
+  width: 5rem;
+}
+
+.rightSideTitleContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.rightSideParagraphContainer p,
+.textGroup p {
+  font-size: 1.25rem;
+}
+
+.titleContainer h1 {
+  font-size: 2.5rem;
+}
+
+.rightSideImagesContainer {
+  display: flex;
+  gap: 2rem;
+}
+
+.rightSideImage {
+  width: 100%;
+  aspect-ratio: 3/3.5;
+  background-color: gray;
+}
+
+.textGroup {
+  text-align: center;
+}
+
+.textGroup h2,
+.rightSideTitleContainer h2 {
+  font-size: 2rem;
+}
