@@ -2,27 +2,27 @@ import styles from "./PEventsSection.module.css";
 import { useEffect, useState } from "react";
 
 function PEventsSection() {
-  let events = [
+  let pEvents = [
     {
-      id: "event_1",
+      id: "pEvent_1",
       name: "GDG EVENT 1",
       url: "src/assets/BackgroundPhotoONE.png",
       date: "Background Photo ONE",
     },
     {
-      id: "event_2",
+      id: "pEvent_2",
       name: "GDG EVENT 2",
       url: "src/assets/BackgroundPhotoTWO.png",
       date: "Background Photo TWO",
     },
     {
-      id: "event_3",
+      id: "pEvent_3",
       name: "GDG EVENT 3",
       url: "src/assets/BackgroundPhotoTHREE.png",
       date: "Background Photo THREE",
     },
     {
-      id: "event_4",
+      id: "pEvent_4",
       name: "GDG EVENT 4",
       url: "src/assets/BackgroundPhotoFOUR.png",
       date: "Background Photo FOUR",
@@ -34,43 +34,43 @@ function PEventsSection() {
   const [thirdEvent, setThirdEvent] = useState(2);
 
   const handlePrev = () => {
-    setMainEvent(mainEvent === 0 ? events.length - 1 : mainEvent - 1);
-    setSecondEvent(secondEvent === 0 ? events.length - 1 : secondEvent - 1);
-    setThirdEvent(thirdEvent === 0 ? events.length - 1 : thirdEvent - 1);
+    setMainEvent(mainEvent === 0 ? pEvents.length - 1 : mainEvent - 1);
+    setSecondEvent(secondEvent === 0 ? pEvents.length - 1 : secondEvent - 1);
+    setThirdEvent(thirdEvent === 0 ? pEvents.length - 1 : thirdEvent - 1);
   };
   const handleNext = () => {
-    setMainEvent(mainEvent === events.length - 1 ? 0 : mainEvent + 1);
-    setSecondEvent(secondEvent === events.length - 1 ? 0 : secondEvent + 1);
-    setThirdEvent(thirdEvent === events.length - 1 ? 0 : thirdEvent + 1);
+    setMainEvent(mainEvent === pEvents.length - 1 ? 0 : mainEvent + 1);
+    setSecondEvent(secondEvent === pEvents.length - 1 ? 0 : secondEvent + 1);
+    setThirdEvent(thirdEvent === pEvents.length - 1 ? 0 : thirdEvent + 1);
   };
   function handleIndicatorClick(index) {
     setMainEvent(index);
-    setSecondEvent(() => (index + 1) % events.length);
-    setThirdEvent(() => (index + 2) % events.length);
+    setSecondEvent(() => (index + 1) % pEvents.length);
+    setThirdEvent(() => (index + 2) % pEvents.length);
   }
 
   useEffect(() => {
-    if (!events.length) return;
+    if (!pEvents.length) return;
 
     const id = setInterval(() => {
-      setMainEvent((prev) => (prev + 1) % events.length);
-      setSecondEvent((prev) => (prev + 1) % events.length);
-      setThirdEvent((prev) => (prev + 1) % events.length);
+      setMainEvent((prev) => (prev + 1) % pEvents.length);
+      setSecondEvent((prev) => (prev + 1) % pEvents.length);
+      setThirdEvent((prev) => (prev + 1) % pEvents.length);
     }, 5000);
 
     return () => clearInterval(id);
-  }, [events.length, mainEvent, secondEvent, thirdEvent]);
+  }, [pEvents.length, mainEvent, secondEvent, thirdEvent]);
   return (
     <section className={styles.pEvents}>
       <div className={styles.titleContainer}>
         <h1>Previous Events</h1>
-        <span>{events.length}</span>
+        <span>{pEvents.length}</span>
         <p className={styles.overlayTitle}>SEE OUR EVENTS</p>
       </div>
       <div className={styles.details}>
         <div className={styles.eventsContainer}>
-          {events && events.length
-            ? events.map((item, index) => {
+          {pEvents && pEvents.length
+            ? pEvents.map((item, index) => {
                 return (
                   <div
                     className={
@@ -89,8 +89,8 @@ function PEventsSection() {
                 );
               })
             : null}
-          {events && events.length
-            ? events.map((item, index) => {
+          {pEvents && pEvents.length
+            ? pEvents.map((item, index) => {
                 return (
                   <div
                     className={
@@ -105,8 +105,8 @@ function PEventsSection() {
                 );
               })
             : null}
-          {events && events.length
-            ? events.map((item, index) => {
+          {pEvents && pEvents.length
+            ? pEvents.map((item, index) => {
                 return (
                   <div
                     className={
@@ -162,7 +162,7 @@ function PEventsSection() {
               />
             </svg>
             <div className={styles.indicatorsWrapper}>
-              {events.map((item, index) => (
+              {pEvents.map((item, index) => (
                 <button
                   key={item.id}
                   onClick={() => handleIndicatorClick(index)}
