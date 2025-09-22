@@ -1,4 +1,5 @@
 import styles from "./UEventsSection.module.css";
+import { useState, useEffect } from "react";
 
 function UEventsSection() {
   let uEvents = [
@@ -84,6 +85,61 @@ function UEventsSection() {
     },
   ];
 
+  // const visibleCount = 3;
+  // const lastStart = Math.max(0, uEvents.length - visibleCount);
+  // const [start, setStart] = useState(0);
+  // const [visibleRange, setVisibleRange] = useState({
+  //   from: 0,
+  //   to: visibleCount,
+  // });
+
+  // useEffect(() => {
+  //   const from = Math.min(Math.max(0, start), lastStart);
+  //   const to = Math.min(from + visibleCount, uEvents.length);
+  //   setVisibleRange({ from, to });
+  //   console.log(visibleRange)
+  // }, [start, visibleCount, uEvents.length, lastStart]);
+
+  // useEffect(() => {
+  //   if (start > lastStart) setStart(lastStart);
+  // }, [uEvents.length, lastStart, start]);
+
+  // const handleNext = () =>
+  //   setStart((prev) => Math.min(prev + visibleCount, lastStart));
+  // const handlePrev = () => setStart((prev) => Math.max(prev - visibleCount, 0));
+
+  const visibleCount = 3;
+  const n = uEvents.length;
+  const [start, setStart] = useState(0);
+  const [visibleRange, setVisibleRange] = useState({
+    from: 0,
+    to: visibleCount,
+  });
+
+  // clamp start when items length changes
+  useEffect(() => {
+    if (n === 0) {
+      setStart(0);
+      return;
+    }
+    if (start > n - 1) setStart(n - 1);
+    if (start < 0) setStart(0);
+  }, [n, start]);
+
+  // derive visible range from start
+  useEffect(() => {
+    const from = Math.min(Math.max(0, start), Math.max(0, n - 1));
+    const to = from + visibleCount;
+    setVisibleRange({ from, to });
+  }, [start, visibleCount, n]);
+
+  const handleNext = () => {
+    setStart((prev) => Math.min(prev + visibleCount, Math.max(0, n - 1)));
+  };
+
+  const handlePrev = () => {
+    setStart((prev) => Math.max(prev - visibleCount, 0));
+  };
   return (
     <section className={styles.uEvents}>
       <div className={styles.titleContainer}>
@@ -92,35 +148,60 @@ function UEventsSection() {
         <p className={styles.overlayTitle}>OUR NEXT EVENTS</p>
       </div>
       <div className={styles.details}>
-        <div className={styles.eventContainer}>
-          <div className={styles.eventImageContainer}>
-            <img src="src\assets\BackgroundPhotoONE.png" alt="" />
-          </div>
-          <div className={styles.textGroup}>
-            <div className={styles.infosGroup}>
-              <h2>Ai Fest</h2>
-              <p>
-                Our anual event is here again with a slight change coming soon
-              </p>
-            </div>
-            <div className={styles.detailsGroup}>
-              <div className={styles.detailsGroupLeftSide}>
-                <h2>23</h2>
-                <p>Feb</p>
-              </div>
-              <div className={styles.detailsGroupRightSide}>
-                <p>Salle D'étude</p>
-                <p>6:00 pm - 9:00pm</p>
-              </div>
-            </div>
-          </div>
-          <button className={styles.registerButton}>Register</button>
+        <div className={styles.gridContainer}>
+          {uEvents.length && uEvents
+            ? uEvents.map((item, index) => {
+                const isActive =
+                  index >= visibleRange.from && index < visibleRange.to;
+                return (
+                  <div
+                    key={item.id}
+                    className={
+                      isActive
+                        ? `${styles.eventContainer}`
+                        : `${styles.eventContainer} ${styles.eventContainerInactive}`
+                    }
+                  >
+                    <div className={styles.eventImageContainer}>
+                      <img src={item.url} alt="" />
+                    </div>
+                    <div className={styles.textGroup}>
+                      <div className={styles.infosGroup}>
+                        <h2>{item.name}</h2>
+                        <p>{item.description}</p>
+                      </div>
+                      <div className={styles.detailsGroup}>
+                        <div className={styles.detailsGroupLeftSide}>
+                          <h2>
+                            {item.startingDate.day}
+                            <span>{item.startingDate.month}</span>
+                          </h2>
+                        </div>
+                        <div className={styles.detailsGroupRightSide}>
+                          <p>{item.place}</p>
+                          <p>
+                            {item.startingDate.hour}:00 pm -
+                            {item.endingDate.hour}:00pm
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={styles.registerButtonContainer}>
+                      <button className={styles.registerButton}>
+                        Register
+                      </button>
+                    </div>
+                  </div>
+                );
+              })
+            : null}
         </div>
         <div className={styles.controls}>
           <svg
             viewBox="35 19 300 329"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            onClick={handlePrev}
           >
             <rect
               x="319.359"
@@ -146,12 +227,31 @@ function UEventsSection() {
             />
           </svg>
           <div className={styles.indicatorsWrapper}>
-            <button></button>
+            {uEvents.map((item, index) => {
+              const isActive =
+                index >= visibleRange.from &&
+                index < visibleRange.to &&
+                index % visibleCount === 0;
+              return (
+                index % visibleCount === 0 && (
+                  <button
+                    key={item.id}
+                    onClick={() => handleIndicatorClick(index)}
+                    className={
+                      isActive
+                        ? `${styles.eventIndicator}`
+                        : `${styles.eventIndicator} ${styles.eventIndicatorInactive}`
+                    }
+                  ></button>
+                )
+              );
+            })}
           </div>
           <svg
             viewBox="300 19 300 329"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            onClick={handleNext}
           >
             <rect
               x="-0.379698"
