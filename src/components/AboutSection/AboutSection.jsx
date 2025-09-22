@@ -6,9 +6,9 @@ function AboutSection() {
       <div className={styles.titleContainer}>
         <h1>About us</h1>
         <img src="src\assets\Library.png" alt="" />
+        <p className={styles.overlayTitle}>ABOUT GDG ENSIA</p>
       </div>
       <div className={styles.details}>
-        <p className={styles.overlayTitle}>ABOUT GDG ENSIA</p>
         <div className={styles.detailsLeftSide}>
           <svg
             viewBox="39 19 557 329"

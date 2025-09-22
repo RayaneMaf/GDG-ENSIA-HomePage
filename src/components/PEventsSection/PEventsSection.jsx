@@ -1,11 +1,52 @@
 import styles from "./PEventsSection.module.css";
+import { useEffect, useState } from "react";
 
 function PEventsSection() {
+  let events = [
+    {
+      id: "event_1",
+      name: "GDG EVENT 1",
+      url: "src/assets/BackgroundPhotoONE.png",
+      date: "Background Photo ONE",
+    },
+    {
+      id: "event_2",
+      name: "GDG EVENT 2",
+      url: "src/assets/BackgroundPhotoTWO.png",
+      date: "Background Photo TWO",
+    },
+    {
+      id: "event_3",
+      name: "GDG EVENT 3",
+      url: "src/assets/BackgroundPhotoTHREE.png",
+      date: "Background Photo THREE",
+    },
+    {
+      id: "event_4",
+      name: "GDG EVENT 4",
+      url: "src/assets/BackgroundPhotoFOUR.png",
+      date: "Background Photo FOUR",
+    },
+  ];
+
+  const [currentEvent, setCurrentEvent] = useState(0);
+
+  useEffect(() => {
+    if (!events.length) return;
+
+    const id = setInterval(() => {
+      setCurrentEvent((prev) => (prev + 1) % events.length);
+    }, 5000);
+
+    return () => clearInterval(id);
+  }, [events.length, currentEvent]);
+
   return (
-    <section className="pEvents">
+    <section className={styles.pEvents}>
       <div className={styles.titleContainer}>
         <h1>Previous Events</h1>
-        <span>16</span>
+        <span>{events.length}</span>
+        <p className={styles.overlayTitle}>SEE OUR EVENTS</p>
       </div>
       <div className={styles.details}>
         <div className={styles.eventsContainer}>
@@ -16,13 +57,11 @@ function PEventsSection() {
               <p>22 Oct</p>
             </div>
           </div>
-          <div className={styles.subEvents}>
-            <div className={styles.eventContainer}>
-              <img src="src\assets\BackgroundPhotoTWO.png" alt="" />
-            </div>
-            <div className={styles.eventContainer}>
-              <img src="src\assets\BackgroundPhotoTHREE.png" alt="" />
-            </div>
+          <div className={styles.eventContainer}>
+            <img src="src\assets\BackgroundPhotoTWO.png" alt="" />
+          </div>
+          <div className={styles.eventContainer}>
+            <img src="src\assets\BackgroundPhotoTHREE.png" alt="" />
           </div>
         </div>
         <div className={styles.controls}>

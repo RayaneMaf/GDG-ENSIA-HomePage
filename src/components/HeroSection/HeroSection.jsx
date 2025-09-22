@@ -2,7 +2,7 @@ import { useState , useEffect} from "react";
 import styles from "./HeroSection.module.css";
 
 function HeroSection() {
-  const images = [
+  let images = [
     {
       id: "slide_1",
       url: "src/assets/BackgroundPhotoONE.png",
