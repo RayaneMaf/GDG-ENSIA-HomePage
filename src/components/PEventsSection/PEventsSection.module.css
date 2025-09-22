@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   margin: 0rem min(5vw, 8rem);
-  gap: 7rem;
+  gap: 5rem;
   position: relative;
   min-height: 100vh;
   justify-content: center;
@@ -24,6 +24,7 @@
   background-color: #ededed;
   padding: 2rem;
   border-radius: 1.25rem;
+  box-shadow: 0px 4px 55.7px 0px #00000040;
 }
 
 .mainEvent {
@@ -90,6 +91,8 @@
   padding: 0.5rem 1rem;
   align-self: center;
   gap: 1.5rem;
+  box-shadow: 0px 15px 15px 0px #00000020;
+  
 }
 
 .overlayTitle {
@@ -158,4 +161,5 @@
 
 .controlsCorner {
   height: 2rem;
+  position: relative;
 }

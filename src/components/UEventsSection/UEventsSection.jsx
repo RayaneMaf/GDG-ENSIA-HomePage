@@ -109,7 +109,6 @@ function UEventsSection() {
   // const handlePrev = () => setStart((prev) => Math.max(prev - visibleCount, 0));
 
   const visibleCount = 3;
-  const n = uEvents.length;
   const [start, setStart] = useState(0);
   const [visibleRange, setVisibleRange] = useState({
     from: 0,
@@ -118,28 +117,41 @@ function UEventsSection() {
 
   // clamp start when items length changes
   useEffect(() => {
-    if (n === 0) {
+    if (uEvents.length === 0) {
       setStart(0);
       return;
     }
-    if (start > n - 1) setStart(n - 1);
+    if (start > uEvents.length - 1) setStart(uEvents.length - 1);
     if (start < 0) setStart(0);
-  }, [n, start]);
+  }, [uEvents.length, start]);
 
   // derive visible range from start
   useEffect(() => {
-    const from = Math.min(Math.max(0, start), Math.max(0, n - 1));
+    const from = Math.min(Math.max(0, start), Math.max(0, uEvents.length - 1));
     const to = from + visibleCount;
     setVisibleRange({ from, to });
-  }, [start, visibleCount, n]);
+  }, [start, visibleCount, uEvents.length]);
 
   const handleNext = () => {
-    setStart((prev) => Math.min(prev + visibleCount, Math.max(0, n - 1)));
+    setStart((prev) =>
+      Math.min(prev + visibleCount, Math.max(0, uEvents.length - 1))
+    );
   };
 
   const handlePrev = () => {
     setStart((prev) => Math.max(prev - visibleCount, 0));
   };
+
+  useEffect(() => {
+    if (!uEvents.length) return;
+
+    const id = setInterval(() => {
+      setStart((prev) => (prev + 3 < uEvents.length ? prev + 3 : 0));
+    }, 5000);
+
+    return () => clearInterval(id);
+  }, [uEvents.length, start]);
+
   return (
     <section className={styles.uEvents}>
       <div className={styles.titleContainer}>
