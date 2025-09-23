@@ -5,6 +5,8 @@ import AboutSection from "./components/AboutSection/AboutSection";
 import PEventsSection from "./components/PEventsSection/PEventsSection";
 import UEventsSection from "./components/UEventsSection/UEventsSection.JSX";
 import RegistirationsSection from "./components/RegistirationsSection/RegistirationsSection";
+import ContactSection from "./components/ContactSection/ContactSection";
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <>
@@ -14,6 +16,8 @@ function App() {
       <PEventsSection />
       <UEventsSection />
       <RegistirationsSection />
+      <ContactSection />
+      <Footer />
     </>
   );
 }

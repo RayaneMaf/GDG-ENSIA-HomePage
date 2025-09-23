@@ -1,7 +1,7 @@
 import styles from "./RegistirationsSection.module.css";
 
 function RegistirationsSection() {
-  let areOpen = false;
+  let areOpen = true;
   return (
     <section className={styles.registirations}>
       <div className={styles.container}>

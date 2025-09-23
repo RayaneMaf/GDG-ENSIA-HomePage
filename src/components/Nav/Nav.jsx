@@ -3,7 +3,7 @@ import styles from "./Nav.module.css";
 function Nav() {
   return (
     <div className={styles.navContainer}>
-      <div className={styles.navLogoContainer}>
+      <div className={styles.logoContainer}>
         <svg
           viewBox="39 19 557 329"
           fill="none"

@@ -85,29 +85,6 @@ function UEventsSection() {
     },
   ];
 
-  // const visibleCount = 3;
-  // const lastStart = Math.max(0, uEvents.length - visibleCount);
-  // const [start, setStart] = useState(0);
-  // const [visibleRange, setVisibleRange] = useState({
-  //   from: 0,
-  //   to: visibleCount,
-  // });
-
-  // useEffect(() => {
-  //   const from = Math.min(Math.max(0, start), lastStart);
-  //   const to = Math.min(from + visibleCount, uEvents.length);
-  //   setVisibleRange({ from, to });
-  //   console.log(visibleRange)
-  // }, [start, visibleCount, uEvents.length, lastStart]);
-
-  // useEffect(() => {
-  //   if (start > lastStart) setStart(lastStart);
-  // }, [uEvents.length, lastStart, start]);
-
-  // const handleNext = () =>
-  //   setStart((prev) => Math.min(prev + visibleCount, lastStart));
-  // const handlePrev = () => setStart((prev) => Math.max(prev - visibleCount, 0));
-
   const visibleCount = 3;
   const [start, setStart] = useState(0);
   const [visibleRange, setVisibleRange] = useState({
@@ -115,7 +92,6 @@ function UEventsSection() {
     to: visibleCount,
   });
 
-  // clamp start when items length changes
   useEffect(() => {
     if (uEvents.length === 0) {
       setStart(0);
@@ -125,7 +101,6 @@ function UEventsSection() {
     if (start < 0) setStart(0);
   }, [uEvents.length, start]);
 
-  // derive visible range from start
   useEffect(() => {
     const from = Math.min(Math.max(0, start), Math.max(0, uEvents.length - 1));
     const to = from + visibleCount;
@@ -133,20 +108,34 @@ function UEventsSection() {
   }, [start, visibleCount, uEvents.length]);
 
   const handleNext = () => {
+    if (start + visibleCount > uEvents.length - 1) {
+      setStart(0);
+      return;
+    }
     setStart((prev) =>
       Math.min(prev + visibleCount, Math.max(0, uEvents.length - 1))
     );
   };
 
   const handlePrev = () => {
+    if (start === 0) {
+      setStart(Math.floor(uEvents.length / visibleCount) * visibleCount);
+      return;
+    }
     setStart((prev) => Math.max(prev - visibleCount, 0));
   };
+
+  function handleIndicatorClick(index) {
+    setStart(index);
+  }
 
   useEffect(() => {
     if (!uEvents.length) return;
 
     const id = setInterval(() => {
-      setStart((prev) => (prev + 3 < uEvents.length ? prev + 3 : 0));
+      setStart((prev) =>
+        prev + visibleCount < uEvents.length ? prev + visibleCount : 0
+      );
     }, 5000);
 
     return () => clearInterval(id);
