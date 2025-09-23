@@ -39,7 +39,7 @@
 }
 
 .ticketsContainer img:first-child {
-  transform-origin: left;
+  transform-origin: top left;
   transform: rotateZ(-2deg);
 }
 
