@@ -1,0 +1,70 @@
+.registirations {
+  margin: 0rem min(5vw, 8rem);
+  margin-top: 5rem;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background: radial-gradient(
+    65.27% 477.08% at 50% 50%,
+    #1a1a1a 0%,
+    #000000 100%
+  );
+  padding: 1rem 5rem;
+  border-radius: 1.25rem;
+}
+
+.textGroup {
+  color: #fff;
+}
+
+.textGroup h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.registirationsStatus p {
+  font-size: 2rem;
+}
+
+.ticketsContainer img {
+  position: absolute;
+  height: 95%;
+  bottom: 0;
+  right: 3rem;
+}
+
+.ticketsContainer img:first-child {
+  transform-origin: left;
+  transform: rotateZ(-2deg);
+}
+
+.ticketsContainer img:last-child {
+  transform-origin: top left;
+  transform: rotateZ(2deg);
+}
+
+.registirationsStatus {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.registirationsStatus span {
+  display: flex;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.statusOpen {
+  background-color: rgba(0, 255, 0, 0.7);
+  box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.7);
+}
+
+.statusClosed {
+  background-color: red;
+  box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.7);
+}
