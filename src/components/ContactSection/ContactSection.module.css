@@ -134,20 +134,20 @@
   border-bottom-right-radius: 1rem;
 }
 
-@media (max-width: 1920px) {
+@media (max-width: 1919px) {
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1439px) {
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
   .details {
     gap: 3rem;
     padding: 2rem 3rem;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .details {
     gap: 2rem;
     padding: 2rem;
@@ -181,10 +181,10 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 }
 
-@media (max-width: 640px) {
+@media (max-width: 639px) {
   .buttonContainer button {
     padding: 0.5rem 3rem;
   }
@@ -194,7 +194,7 @@
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 374px) {
   .details {
     gap: 2rem;
     padding: 1rem 2rem;

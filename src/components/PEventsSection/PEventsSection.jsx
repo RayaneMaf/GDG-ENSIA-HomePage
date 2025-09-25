@@ -63,7 +63,7 @@ function PEventsSection() {
 
   const [isSmallScreen, setIsSmallScreen] = useState(() => {
     if (typeof window !== "undefined") {
-      if (window.innerWidth < 1280) return true;
+      if (window.innerWidth < 1279) return true;
       return false;
     }
     return false; // fallback for SSR
@@ -71,7 +71,7 @@ function PEventsSection() {
 
   useEffect(() => {
     const updateScreenStatus = () => {
-      if (window.innerWidth < 1280) {
+      if (window.innerWidth < 1279) {
         setIsSmallScreen(true);
       } else {
         setIsSmallScreen(false);
