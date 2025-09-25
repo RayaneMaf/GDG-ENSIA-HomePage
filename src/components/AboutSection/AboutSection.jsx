@@ -83,10 +83,10 @@ function AboutSection() {
           </div>
           <div className={styles.rightSideImagesContainer}>
             <div className={styles.rightSideImage}>
-              <img src="" alt="" />
+              <img src="src\assets\BackgroundPhotoONE.png" alt="" />
             </div>
             <div className={styles.rightSideImage}>
-              <img src="" alt="" />
+              <img src="src\assets\BackgroundPhotoTWO.png" alt="" />
             </div>
           </div>
         </div>
