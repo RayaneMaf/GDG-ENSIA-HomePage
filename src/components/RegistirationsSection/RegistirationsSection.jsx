@@ -6,12 +6,12 @@ function RegistirationsSection() {
     <section className={styles.registirations}>
       <div className={styles.container}>
         <div className={styles.textGroup}>
-          <h2>Secure Your Spot</h2>
+          <h1>Secure Your Spot</h1>
           <div className={styles.registirationsStatus}>
             <span
               className={areOpen ? styles.statusOpen : styles.statusClosed}
             ></span>
-            <p>Registrations are {areOpen ? "open" : "closed"}</p>
+            <h3>Registrations are {areOpen ? "open" : "closed"}</h3>
           </div>
         </div>
         <div className={styles.ticketsContainer}>

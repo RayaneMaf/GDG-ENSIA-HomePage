@@ -84,8 +84,14 @@ function UEventsSection() {
       },
     },
   ];
-
-  const visibleCount = 3;
+  const [visibleCount, setVisibleCount] = useState(() => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 640) return 1;
+      if (window.innerWidth < 1280) return 2;
+      return 3;
+    }
+    return 3;
+  });
   const [start, setStart] = useState(0);
   const [visibleRange, setVisibleRange] = useState({
     from: 0,
@@ -141,6 +147,24 @@ function UEventsSection() {
     return () => clearInterval(id);
   }, [uEvents.length, start]);
 
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1280) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(3);
+      }
+    };
+
+    updateVisibleCount();
+
+    window.addEventListener("resize", updateVisibleCount);
+
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, []);
+
   return (
     <section className={styles.uEvents}>
       <div className={styles.titleContainer}>
@@ -173,10 +197,10 @@ function UEventsSection() {
                       </div>
                       <div className={styles.detailsGroup}>
                         <div className={styles.detailsGroupLeftSide}>
-                          <h2>
+                          <h1>
                             {item.startingDate.day}
                             <span>{item.startingDate.month}</span>
-                          </h2>
+                          </h1>
                         </div>
                         <div className={styles.detailsGroupRightSide}>
                           <p>{item.place}</p>

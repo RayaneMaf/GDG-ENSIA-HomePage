@@ -4,8 +4,9 @@
   margin: 0rem min(5vw, 8rem);
   gap: 5rem;
   position: relative;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   justify-content: center;
+  margin-bottom: 10rem;
 }
 
 .titleContainer {
@@ -14,15 +15,12 @@
   position: relative;
 }
 
-.titleContainer h1 {
-  font-size: 3.25rem;
-}
-
 .titleContainer span {
   background-color: #70a3fa;
   border: 1px solid #000;
   padding: 0.3rem 1.2rem;
-  font-size: 2.5rem;
+  font-size: clamp(1.25rem, calc(0.8rem + 2vw), 2.5rem);
+  align-self: center;
   border-radius: 3.5rem;
 }
 
@@ -68,6 +66,7 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0px 4px 39.3px 0px #00000040;
+  max-width: 450px;
 }
 
 .textGroup {
@@ -75,14 +74,6 @@
   flex-direction: column;
   gap: 3rem;
   padding: 0rem 1rem;
-}
-
-.infosGroup h2 {
-  font-size: 2rem;
-}
-
-.infosGroup p {
-  font-size: 1.25rem;
 }
 
 .registerButtonContainer {
@@ -98,11 +89,12 @@
   position: relative;
   width: 100%;
   padding: 0.625rem;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, calc(0.6rem + 1.2vw), 1.75rem);
   color: #fff;
   background-color: #161616;
   border: none;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .registerButtonContainer::before {
@@ -133,7 +125,7 @@
 }
 
 .detailsGroup p {
-  font-size: 1.25rem;
+  font-size: clamp(0.875rem, calc(0.6rem + 0.8vw), 1.25rem);
 }
 
 .detailsGroupRightSide {
@@ -142,12 +134,8 @@
   gap: 0.5rem;
 }
 
-.detailsGroupLeftSide h2 {
-  font-size: 4rem;
-}
-
 .detailsGroupLeftSide span {
-  font-size: 1.25rem;
+  font-size: clamp(0.875rem, calc(0.6rem + 0.8vw), 1.25rem);
 }
 
 .controls {
@@ -201,4 +189,48 @@
   flex-direction: column;
   gap: 1rem;
   align-items: center;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1920px) {
+}
+
+@media (max-width: 1440px) {
+}
+
+@media (max-width: 1280px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .eventContainer {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 640px) {
+  .gridContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .eventContainer {
+    max-width: 300px;
+  }
+
+  .titleContainer {
+    justify-content: center;
+  }
+
+  .uEvents {
+    gap: 2rem;
+    
+  }
+}
+
+@media (max-width: 375px) {
 }

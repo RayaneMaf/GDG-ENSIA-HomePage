@@ -60,6 +60,29 @@ function PEventsSection() {
 
     return () => clearInterval(id);
   }, [pEvents.length, mainEvent, secondEvent, thirdEvent]);
+
+  const [isSmallScreen, setIsSmallScreen] = useState(() => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 1280) return true;
+      return false;
+    }
+    return false; // fallback for SSR
+  });
+
+  useEffect(() => {
+    const updateScreenStatus = () => {
+      if (window.innerWidth < 1280) {
+        setIsSmallScreen(true);
+      } else {
+        setIsSmallScreen(false);
+      }
+    };
+
+    // Still call it in useEffect for resize events
+    window.addEventListener("resize", updateScreenStatus);
+
+    return () => window.removeEventListener("resize", updateScreenStatus);
+  }, []);
   return (
     <section className={styles.pEvents}>
       <div className={styles.titleContainer}>
@@ -83,13 +106,13 @@ function PEventsSection() {
                     <img src={item.url} alt="" />
                     <div className={styles.textGroup}>
                       <h2>{item.name}</h2>
-                      <p>{item.date}</p>
+                      <h3>{item.date}</h3>
                     </div>
                   </div>
                 );
               })
             : null}
-          {pEvents && pEvents.length
+          {pEvents && pEvents.length && !isSmallScreen
             ? pEvents.map((item, index) => {
                 return (
                   <div
@@ -105,7 +128,7 @@ function PEventsSection() {
                 );
               })
             : null}
-          {pEvents && pEvents.length
+          {pEvents && pEvents.length && !isSmallScreen
             ? pEvents.map((item, index) => {
                 return (
                   <div

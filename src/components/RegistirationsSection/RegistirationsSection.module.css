@@ -1,6 +1,6 @@
 .registirations {
-  margin: 8rem min(5vw, 8rem);
-
+  margin: 0rem min(5vw, 8rem);
+  margin-bottom: 10rem;
 }
 
 .container {
@@ -21,13 +21,8 @@
   color: #fff;
 }
 
-.textGroup h2 {
-  font-size: 3.5rem;
+.textGroup h1 {
   font-weight: 700;
-}
-
-.registirationsStatus p {
-  font-size: 2rem;
 }
 
 .ticketsContainer img {
@@ -69,4 +64,49 @@
 .statusClosed {
   background-color: red;
   box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.7);
+}
+
+@media (max-width: 1920px) {
+}
+
+@media (max-width: 1440px) {
+}
+
+@media (max-width: 1280px) {
+}
+
+@media (max-width: 1024px) {
+  .container {
+    position: relative;
+    flex-direction: column;
+    width: fit-content;
+    justify-self: center;
+    gap: 5rem;
+    padding: 1rem 3rem;
+  }
+
+  .ticketsContainer {
+    position: relative;
+    width: 100%;
+  }
+
+  .ticketsContainer img {
+    height: unset;
+    width: 100%;
+    right: unset;
+    bottom: -2rem;
+  }
+}
+
+@media (max-width: 768px) {  .container {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  
+
+}
+
+@media (max-width: 375px) {
 }

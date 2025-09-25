@@ -62,7 +62,7 @@ function AboutSection() {
           </svg>
           <div className={styles.textGroup}>
             <h2>Google Developer Group</h2>
-            <p>National Higher Of Artificial Intelligence</p>
+            <p>National Higher School Of Artificial Intelligence</p>
           </div>
         </div>
         <div className={styles.detailsRightSide}>

@@ -1,4 +1,4 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import styles from "./HeroSection.module.css";
 
 function HeroSection() {
@@ -41,7 +41,7 @@ function HeroSection() {
     if (!images.length) return;
 
     const id = setInterval(() => {
-      setCurrentImage(prev => (prev + 1) % images.length);
+      setCurrentImage((prev) => (prev + 1) % images.length);
     }, 5000);
 
     return () => clearInterval(id);
@@ -49,25 +49,27 @@ function HeroSection() {
 
   return (
     <section className={styles.hero}>
-      {images && images.length
-        ? images.map((item, index) => (
-            <img
-              src={item.url}
-              alt={item.alt}
-              key={item.id}
-              className={
-                currentImage === index
-                  ? `${styles.heroImage}`
-                  : `${styles.heroImage} ${styles.heroImageInactive}`
-              }
-            ></img>
-          ))
-        : null}
+      <div className={styles.imageContainer}>
+        {images && images.length
+          ? images.map((item, index) => (
+              <img
+                src={item.url}
+                alt={item.alt}
+                key={item.id}
+                className={
+                  currentImage === index
+                    ? `${styles.heroImage}`
+                    : `${styles.heroImage} ${styles.heroImageInactive}`
+                }
+              ></img>
+            ))
+          : null}
+      </div>
       <div className={styles.details}>
         <div className={styles.text}>
-          <p className={styles.subText}>
+          <h3 className={styles.subText}>
             There’s Always Something Happening at GDG ENSIA
-          </p>
+          </h3>
           <h1 className={styles.title}>GDG Open Day</h1>
           <h2 className={styles.date}>16 Oct</h2>
         </div>

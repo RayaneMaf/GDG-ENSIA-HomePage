@@ -1,5 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/product-sans");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
 :root {
   --blueColor: rgba(66, 133, 243, 1);
   --redColor: rgba(233, 67, 53, 1);
@@ -16,4 +17,21 @@
 
 html {
   font-family: "Product Sans", sans-serif;
+}
+
+h1 {
+  font-size: clamp(2rem, calc(1rem + 3vw), 4rem);
+  
+}
+
+h2 {
+  font-size: clamp(1.25rem, calc(0.8rem + 2vw), 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1rem, calc(0.6rem + 1.2vw), 1.75rem);
+}
+
+p {
+  font-size: clamp(0.875rem, calc(0.6rem + 0.8vw), 1.125rem);
 }

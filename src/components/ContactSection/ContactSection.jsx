@@ -30,11 +30,11 @@ function ContactSection() {
                 />
               </svg>
             </div>
-            <p>
+            <h3>
               Have questions, ideas, want to collab or get involved?
               <br />
               Reach out to us today and become part of our vibrant community.
-            </p>
+            </h3>
           </div>
           <div className={styles.logoContainer}>
             <img src="src\assets\GDGLogo.png" alt="" />
