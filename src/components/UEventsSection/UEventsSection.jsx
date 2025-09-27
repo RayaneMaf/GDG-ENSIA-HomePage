@@ -86,8 +86,8 @@ function UEventsSection() {
   ];
   const [visibleCount, setVisibleCount] = useState(() => {
     if (typeof window !== "undefined") {
-      if (window.innerWidth < 640) return 1;
-      if (window.innerWidth < 1280) return 2;
+      if (window.innerWidth < 639) return 1;
+      if (window.innerWidth < 1279) return 2;
       return 3;
     }
     return 3;
@@ -149,9 +149,9 @@ function UEventsSection() {
 
   useEffect(() => {
     const updateVisibleCount = () => {
-      if (window.innerWidth < 640) {
+      if (window.innerWidth < 639) {
         setVisibleCount(1);
-      } else if (window.innerWidth < 1280) {
+      } else if (window.innerWidth < 1279) {
         setVisibleCount(2);
       } else {
         setVisibleCount(3);
