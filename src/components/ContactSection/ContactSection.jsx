@@ -53,12 +53,11 @@ function ContactSection() {
             id="userEmail"
             placeholder="Your Email"
           />
-          <input
-            type="text"
+          <textarea
             name="letter"
             id="letter"
             placeholder="Your Question/idea"
-          />
+          ></textarea>
         </form>
       </div>
       <div className={styles.formControl}>

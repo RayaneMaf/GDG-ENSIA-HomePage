@@ -52,22 +52,20 @@
 }
 
 .form input {
-  font-size: clamp(1rem, calc(0.6rem + 1.2vw), 1.75rem);
+  font-size: clamp(1rem, calc(0.6rem + 1.2vw), 1.25rem);
   padding: 1rem 1.5rem;
   border-radius: 4rem;
   outline: none;
   border: 1px solid #000000;
 }
 
-.form input:last-child {
-  position: relative;
-  height: 100%;
-  border-radius: 1rem;
-}
-
-.form input:last-child::placeholder {
-  position: absolute;
-  top: 1.5rem;
+.form textarea {
+  font-size: clamp(1rem, calc(0.6rem + 1.2vw), 1.25rem);
+  padding: 1rem 1.5rem;
+  border-radius: 1.25rem;
+  outline: none;
+  border: 1px solid #000000;
+  min-height: 15rem;
 }
 
 .controlsCorner {
